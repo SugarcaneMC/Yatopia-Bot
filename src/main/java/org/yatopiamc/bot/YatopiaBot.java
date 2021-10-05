@@ -131,7 +131,6 @@ public class YatopiaBot {
         new CommandMappingSpecific(this),
         new CommandPing(),
         new CommandShutdown(botAdminRoleID),
-        new CommandVroomVroom(),
         new CommandAsk());
 
     executor.scheduleAtFixedRate(
