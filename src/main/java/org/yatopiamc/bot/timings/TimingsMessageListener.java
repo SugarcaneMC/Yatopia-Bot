@@ -140,7 +140,7 @@ public class TimingsMessageListener extends ListenerAdapter {
                     }
                     embedBuilder.addField(String.format("Plus %d more recommendations", size - 24), "Create a new timings report after resolving some of the above issues to see more.", false);
                 }
-                embedBuilder.setFooter(String.format("https://yatopiamc.org/ • Timing: %dms network, %dms processing", startProcessingTime - startTime, System.currentTimeMillis() - startProcessingTime),
+                embedBuilder.setFooter(String.format("https://sugarcanemc.org/ • Timing: %dms network, %dms processing", startProcessingTime - startTime, System.currentTimeMillis() - startProcessingTime),
                         event.getJDA().getSelfUser().getEffectiveAvatarUrl());
                 inProgress.handle((msg, t) -> {
                     if(msg != null) {

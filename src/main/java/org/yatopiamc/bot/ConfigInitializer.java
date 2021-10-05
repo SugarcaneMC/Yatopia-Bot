@@ -26,6 +26,7 @@ public class ConfigInitializer {
       }
       ObjectNode node = mapper.getNodeFactory().objectNode();
       node.put("token", "Your token here");
+      node.put("admin-role", "000000000000000000");
       try (PrintWriter writer = new PrintWriter(new FileOutputStream(file))) {
         mapper.writerWithDefaultPrettyPrinter().writeValue(writer, node);
       } catch (IOException e) {

@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 public class TimingsSuggestions {
 
-    public static final String CURRENT_MINECRAFT_VERSION = "1.16.5";
+    public static final String CURRENT_MINECRAFT_VERSION = "1.17.1";
     public static final Map<String, PluginServerSuggestion> SERVER_PLUGIN_SUGGESTIONS;
     public static final Map<String, ConfigServerSuggestion> SERVER_CONFIG_SUGGESTIONS;
 
@@ -39,7 +39,6 @@ public class TimingsSuggestions {
                     suggestions.put("MobStacker", new PluginSuggestion("", "Stacking mobs causes more lag."));
                     suggestions.put("WildStacker", new PluginSuggestion("", "Stacking mobs causes more lag."));
                     suggestions.put("UltimateStacker", new PluginSuggestion("", "Stacking mobs causes more lag."));
-                    suggestions.put("FastAsyncWorldEdit", new PluginSuggestion("", "FAWE has been known to cause issues. Consider replacing FAWE with [Worldedit](https://enginehub.org/worldedit/#downloads)."));
                     suggestions.put("IllegalStack", new PluginSuggestion("", "You probably don't need IllegalStack as Paper already fixes all dupe and crash bugs."));
                     suggestions.put("ExploitFixer", new PluginSuggestion("", "You probably don't need ExploitFixer as Paper already fixes all dupe and crash bugs."));
                     suggestions.put("EntityTrackerFixer", new PluginSuggestion("", "You don't need EntityTrackerFixer as Paper already has its features."));
@@ -235,20 +234,20 @@ public class TimingsSuggestions {
                     configs -> configs.getAsJsonObject("purpur").getAsJsonObject("world-settings").entrySet().stream().anyMatch(entry -> !entry.getValue().getAsJsonObject().getAsJsonObject("gameplay-mechanics").getAsJsonObject("player").get("teleport-if-outside-border").getAsBoolean())));
             return suggestions;
         }));
-        configSuggestions.put("yatopia", new ConfigServerSuggestion(() -> {
+        configSuggestions.put("sugarcane", new ConfigServerSuggestion(() -> {
             Map<String, ConfigSuggestion> suggestions = new HashMap<>();
-            suggestions.put("settings.fire-block-physics-event", new ConfigSuggestion("", "Disable this in [yatopia.yml](https://github.com/YatopiaMC/Yatopia/wiki/Config-Entries).",
-                    configs -> configs.getAsJsonObject("yatopia").getAsJsonObject("settings").get("fire-block-physics-event").getAsBoolean()));
-            suggestions.put("settings.intervals.player-time-statistics", new ConfigSuggestion("", "Increase this in [yatopia.yml](https://github.com/YatopiaMC/Yatopia/wiki/Config-Entries). Recommended: 20.",
-                    configs -> configs.getAsJsonObject("yatopia").getAsJsonObject("settings").getAsJsonObject("intervals").get("player-time-statistics").getAsInt() < 20));
-            suggestions.put("settings.criterion-triggers.location", new ConfigSuggestion("", "Disable this in [yatopia.yml](https://github.com/YatopiaMC/Yatopia/wiki/Config-Entries) If you don't have any datapacks that use criterion triggers.",
-                    configs -> configs.getAsJsonObject("yatopia").getAsJsonObject("settings").getAsJsonObject("criterion-triggers").get("location").getAsBoolean()));
-            suggestions.put("settings.criterion-triggers.enter-block", new ConfigSuggestion("", "Disable this in [yatopia.yml](https://github.com/YatopiaMC/Yatopia/wiki/Config-Entries) If you don't have any datapacks that use criterion triggers.",
-                    configs -> configs.getAsJsonObject("yatopia").getAsJsonObject("settings").getAsJsonObject("criterion-triggers").get("enter-block").getAsBoolean()));
-            suggestions.put("settings.criterion-triggers.tick", new ConfigSuggestion("", "Disable this in [yatopia.yml](https://github.com/YatopiaMC/Yatopia/wiki/Config-Entries) If you don't have any datapacks that use criterion triggers.",
-                    configs -> configs.getAsJsonObject("yatopia").getAsJsonObject("settings").getAsJsonObject("criterion-triggers").get("tick").getAsBoolean()));
-            suggestions.put("settings.tick.enchanting-tables", new ConfigSuggestion("", "Disable this in [yatopia.yml](https://github.com/YatopiaMC/Yatopia/wiki/Config-Entries).",
-                    configs -> configs.getAsJsonObject("yatopia").getAsJsonObject("settings").getAsJsonObject("tick").get("enchanting-tables").getAsBoolean()));
+            suggestions.put("settings.fire-block-physics-event", new ConfigSuggestion("", "Disable this in [sugarcane.yml].",
+                    configs -> configs.getAsJsonObject("sugarcane").getAsJsonObject("settings").get("fire-block-physics-event").getAsBoolean()));
+            suggestions.put("settings.intervals.player-time-statistics", new ConfigSuggestion("", "Increase this in [sugarcane.yml]. Recommended: 20.",
+                    configs -> configs.getAsJsonObject("sugarcane").getAsJsonObject("settings").getAsJsonObject("intervals").get("player-time-statistics").getAsInt() < 20));
+            suggestions.put("settings.criterion-triggers.location", new ConfigSuggestion("", "Disable this in [sugarcane.yml] If you don't have any datapacks that use criterion triggers.",
+                    configs -> configs.getAsJsonObject("sugarcane").getAsJsonObject("settings").getAsJsonObject("criterion-triggers").get("location").getAsBoolean()));
+            suggestions.put("settings.criterion-triggers.enter-block", new ConfigSuggestion("", "Disable this in [sugarcane.yml] If you don't have any datapacks that use criterion triggers.",
+                    configs -> configs.getAsJsonObject("sugarcane").getAsJsonObject("settings").getAsJsonObject("criterion-triggers").get("enter-block").getAsBoolean()));
+            suggestions.put("settings.criterion-triggers.tick", new ConfigSuggestion("", "Disable this in [sugarcane.yml] If you don't have any datapacks that use criterion triggers.",
+                    configs -> configs.getAsJsonObject("sugarcane").getAsJsonObject("settings").getAsJsonObject("criterion-triggers").get("tick").getAsBoolean()));
+            suggestions.put("settings.tick.enchanting-tables", new ConfigSuggestion("", "Disable this in [sugarcane.yml]",
+                    configs -> configs.getAsJsonObject("sugarcane").getAsJsonObject("settings").getAsJsonObject("tick").get("enchanting-tables").getAsBoolean()));
             return suggestions;
         }));
         SERVER_CONFIG_SUGGESTIONS = configSuggestions;

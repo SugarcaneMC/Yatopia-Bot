@@ -10,9 +10,9 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import org.jetbrains.annotations.NotNull;
 import org.yatopiamc.bot.EmbedUtil;
 
-@CommandAliases("jdk|flags|openj9|jvm|graalvm")
+@CommandAliases("jdk|flags")
 @CommandDescription("JDK specific commands")
-@CommandUsage("jdk|?flags|?openj9|?jvm|?graalvm")
+@CommandUsage("?jdk|?flags")
 public class CommandJDKSpecific extends Command {
 
   @Override
@@ -22,7 +22,7 @@ public class CommandJDKSpecific extends Command {
     switch (alias) {
       case "jdk":
         String descriptionJdk =
-            "Our advice on JDK is to use the latest LTS (Long Term Support) version, currently JDK 11";
+            "Use a JDK version 16 or higher.";
         channel
             .sendMessage(
                 EmbedUtil.withAuthor(context.getAuthor()).setDescription(descriptionJdk).build())
@@ -34,16 +34,6 @@ public class CommandJDKSpecific extends Command {
         channel
             .sendMessage(
                 EmbedUtil.withAuthor(context.getAuthor()).setDescription(descriptionFlags).build())
-            .queue();
-        break;
-      case "jvm":
-      case "openj9":
-      case "graalvm":
-              channel
-            .sendMessage(
-                EmbedUtil.withAuthor(context.getAuthor())
-                    .setDescription("We recommend using GraalVM or HotSpot JVM. GraalVM is known to have better performance than HotSpot JVM. Of course, you're free to use and do whatever you want.")
-                    .build())
             .queue();
         break;
         // String descriptionVm =

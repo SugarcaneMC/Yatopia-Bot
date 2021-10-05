@@ -8,11 +8,10 @@ import com.mrivanplays.jdcf.data.CommandDescription;
 import com.mrivanplays.jdcf.data.CommandUsage;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import org.jetbrains.annotations.NotNull;
-import org.yatopiamc.bot.EmbedUtil;
 
-@CommandAliases("download|1.15.2|1.16.1|1.16.2|1.16.3|1.16.4|1.16.5")
+@CommandAliases("download|dev|rc")
 @CommandDescription("Download specific commands.")
-@CommandUsage("?download|?1.15.2|?1.16.1|?1.16.2|?1.16.3|?1.16.4|?1.16.5")
+@CommandUsage("?download|?dev|?rc")
 public class CommandDownloadSpecific extends Command {
 
   @Override
@@ -22,39 +21,19 @@ public class CommandDownloadSpecific extends Command {
     switch (alias) {
       case "download":
         channel
-          .sendMessage("<https://ci.codemc.io/job/YatopiaMC/job/Yatopia/job/ver%252F1.16.5/>")
+          .sendMessage("<https://ci.sugarcanemc.org/job/Sugarcane/>")
           .queue();
         break;
-      case "1.15.2":
+      case "dev":
         channel
             .sendMessage(
-                "<https://github.com/YatopiaMC/Yatopia/actions?query=branch%3Aver%2F1.15.2>")
+                "<https://ci.sugarcanemc.org/job/Sugarcane/job/1.17.1%252Fdev/>")
             .queue();
         break;
-      case "1.16.1":
+      case "rc":
         channel
             .sendMessage(
-                "<https://github.com/YatopiaMC/Yatopia/actions?query=branch%3Aver%2F1.16.1>")
-            .queue();
-        break;
-      case "1.16.2":
-        channel
-            .sendMessage("<https://ci.codemc.io/job/YatopiaMC/job/Yatopia/job/ver%252F1.16.2/>")
-            .queue();
-        break;
-      case "1.16.3":
-        channel
-            .sendMessage("<https://ci.codemc.io/job/YatopiaMC/job/Yatopia/job/ver%252F1.16.3/>")
-            .queue();
-        break;
-      case "1.16.4":
-        channel
-            .sendMessage("<https://ci.codemc.io/job/YatopiaMC/job/Yatopia/job/ver%252F1.16.4/>")
-            .queue();
-        break;
-      case "1.16.5":
-        channel
-            .sendMessage("<https://ci.codemc.io/job/YatopiaMC/job/Yatopia/job/ver%252F1.16.5/>")
+                "<https://ci.sugarcanemc.org/job/Sugarcane/job/1.17.1%252Frc/>")
             .queue();
         break;
     }

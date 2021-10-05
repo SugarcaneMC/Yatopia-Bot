@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 @CommandAliases("ping")
 @CommandDescription("Shows latencies")
-@CommandUsage("ping")
+@CommandUsage("?ping")
 public class CommandPing extends Command {
 
   @Override

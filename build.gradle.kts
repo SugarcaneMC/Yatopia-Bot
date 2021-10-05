@@ -40,15 +40,9 @@ dependencies {
 }
 
 group = "org.yatopiamc"
-version = "1.0-SNAPSHOT"
-description = "Yatopia-Bot"
+version = "1.0"
+description = "Sugarcane-Timings-Bot"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
-
-publishing {
-    publications.create<MavenPublication>("maven") {
-        from(components["java"])
-    }
-}
 
 tasks.withType<JavaCompile>() {
     options.encoding = "UTF-8"

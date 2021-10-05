@@ -16,9 +16,6 @@ import org.yatopiamc.bot.commands.*;
 import org.yatopiamc.bot.mappings.MappingParser;
 import org.yatopiamc.bot.mappings.spigot.SpigotMappingHandler;
 import org.yatopiamc.bot.mappings.yarn.YarnMappingHandler;
-import org.yatopiamc.bot.paste.PasteMessageListener;
-import org.yatopiamc.bot.captcha.YatoCaptcha;
-import org.yatopiamc.bot.captcha.YatoCaptchaTest;
 import org.yatopiamc.bot.timings.TimingsMessageListener;
 import org.yatopiamc.bot.util.NetworkUtils;
 
@@ -36,10 +33,7 @@ public class YatopiaBot {
 
   public static final Logger LOGGER = LoggerFactory.getLogger(YatopiaBot.class);
   private final TimingsMessageListener timingsMessageListener = new TimingsMessageListener();
-  private final PasteMessageListener pasteMessageListener = new PasteMessageListener();
-  public final String botAdminRoleID = "834851929133678655"; // for YatopiaMC
-  // public final String botAdminRoleID = "834858365129195530"; // for test server
-
+  public final String botAdminRoleID = "855918656071925810"; // for Sugarcane
 
   public static void main(String[] args) throws LoginException, InterruptedException, IOException {
     ConfigInitializer config = new ConfigInitializer();
@@ -68,7 +62,7 @@ public class YatopiaBot {
 
               @Override
               public Thread newThread(@NotNull Runnable r) {
-                Thread thread = new Thread(r, "Yatopia-Bot Thread #" + count.getAndIncrement());
+                Thread thread = new Thread(r, "Sugarcane-Timings-Bot Thread #" + count.getAndIncrement());
                 thread.setDaemon(true);
                 return thread;
               }
@@ -82,12 +76,9 @@ public class YatopiaBot {
             .setGatewayPool(executor)
             .setCallbackPool(executor)
             .setRateLimitPool(executor)
-            .setActivity(Activity.playing("Yatopia.jar"))
+            .setActivity(Activity.playing("Sugarcane.jar"))
             .disableCache(CacheFlag.VOICE_STATE, CacheFlag.ACTIVITY, CacheFlag.CLIENT_STATUS)
             .addEventListeners(timingsMessageListener)
-            .addEventListeners(pasteMessageListener)
-            .addEventListeners(new YatoCaptcha())
-            .addEventListeners(new YatoCaptchaTest())
             .build()
             .awaitReady();
 
@@ -96,7 +87,7 @@ public class YatopiaBot {
             new EmbedBuilder()
                 .setColor(0xffff00)
                 .setTimestamp(Instant.now())
-                .setFooter("https://yatopiamc.org/", jda.getSelfUser().getEffectiveAvatarUrl()));
+                .setFooter("https://sugarcanemc.org/", jda.getSelfUser().getEffectiveAvatarUrl()));
 
     CommandSettings settings = CommandSettings.defaultSettings();
     settings.setEnablePrefixCommand(false);
@@ -121,9 +112,9 @@ public class YatopiaBot {
     settings.setHelpCommandEmbed(
         () ->
             EmbedUtil.defaultEmbed()
-                .setTitle("Yatopia Bot -- `()` - optional, `[]` - required")
+                .setTitle("Sugarcane Timings Bot -- `()` - optional, `[]` - required")
                 .setThumbnail(
-                    "https://yatopiamc.org/static/img/yatopia-shiny.gif"));
+                    "https://sugarcanemc.org/assets/img/logo.svg"));
     settings.setFailReasonHandler(null);
     settings.setCommandsPerHelpPage(10);
     settings.setLogExecutedCommands(true);
@@ -141,8 +132,6 @@ public class YatopiaBot {
         new CommandPing(),
         new CommandShutdown(botAdminRoleID),
         new CommandVroomVroom(),
-        new CommandGiveRole(),
-        new CommandCaptchaTest(),
         new CommandAsk());
 
     executor.scheduleAtFixedRate(
@@ -153,7 +142,7 @@ public class YatopiaBot {
           public void run() {
             if (i == 0) {
               i = 1;
-              jda.getPresence().setActivity(Activity.playing("Yatopia.jar"));
+              jda.getPresence().setActivity(Activity.playing("Sugarcane.jar"));
             } else {
               jda.getPresence().setActivity(Activity.watching("over you ♥"));
               i = 0;

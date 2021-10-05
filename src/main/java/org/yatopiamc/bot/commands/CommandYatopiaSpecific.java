@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 @CommandAliases("website|invite")
 @CommandDescription("Yatopia specific commands")
-@CommandUsage("website|?invite")
+@CommandUsage("?website|?invite")
 public class CommandYatopiaSpecific extends Command {
 
   @Override
@@ -23,14 +23,14 @@ public class CommandYatopiaSpecific extends Command {
       channel
           .sendMessage(
               EmbedUtil.withAuthor(context.getAuthor())
-                  .setDescription("https://yatopiamc.org/")
+                  .setDescription("https://sugarcanemc.org/")
                   .build())
           .queue();
     } else if ("invite".equalsIgnoreCase(alias)) {
       channel
           .sendMessage(
               EmbedUtil.withAuthor(context.getAuthor())
-                  .setDescription("<https://discord.io/YatopiaMC>")
+                  .setDescription("<https://discord.gg/B6PNv2gav8>")
                   .build())
           .queue();
     }
